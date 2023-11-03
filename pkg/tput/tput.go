@@ -36,6 +36,16 @@ func Cuu(w io.Writer, n int) {
 	writef(w, "\u001b[%dA", n)
 }
 
+// Right moves the cursor n characters to the right relative to the current position.
+func Right(w io.Writer, n int) {
+	writef(w, "\x1b[%dC", n)
+}
+
+// Left moves the cursor n characters to the left relative to the current position.
+func Left(w io.Writer, n int) {
+	writef(w, "\x1b[%dD", n)
+}
+
 // BufScreen ensures that there are enough lines available
 // by sending n * newlines to the writer.
 func BufScreen(w io.Writer, n int) {

@@ -41,6 +41,7 @@ type spinnerManager struct {
 	completeColor colors.Color
 	errorColor    colors.Color
 	messageColor  colors.Color
+	runtimeColor  colors.Color
 	writer        io.Writer
 	done          chan bool
 	hasUpdate     chan bool
@@ -57,6 +58,7 @@ func (sm *spinnerManager) AddSpinner(message string) *Spinner {
 		CompleteColor: sm.completeColor,
 		ErrorColor:    sm.errorColor,
 		MessageColor:  sm.messageColor,
+		RuntimeColor:  sm.runtimeColor,
 		HasUpdate:     sm.hasUpdate,
 	}
 	spinner := NewSpinner(opts)
@@ -223,6 +225,7 @@ func NewSpinnerManager(options ...managerOption) SpinnerManager {
 		errorColor:    colors.FgHiRed,
 		completeColor: colors.FgHiGreen,
 		messageColor:  colors.NoColor,
+		runtimeColor:  colors.NoColor,
 		writer:        getWriter(),
 		done:          make(chan bool),
 		hasUpdate:     make(chan bool),
